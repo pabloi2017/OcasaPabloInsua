@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OcasaPabloInsua.Models.Cliente>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+          crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-4">
+        <p>
+            @Html.ActionLink("Create New", "Create", "Clientes", new { @class = "btn btn-primary" })
+        </p>
+        @if (!(Model == null || Model.Count() <= 0))
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RazonSocial)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direccion)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RazonSocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direccion)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Clientes", new { id = item.IdCliente }, new { @class = "btn btn-warning btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-primary" role="alert">
+                A la fecha no existe ningún registro de clientes
+            </div>
+        }
+    </div>
+</body>
+</html>
